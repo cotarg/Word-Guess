@@ -1,4 +1,4 @@
-alphabet_array = []
+alphabet_array = ["A"..."Z"]
 
 class WordGuess
   def initialize
@@ -9,13 +9,14 @@ class WordGuess
     puts "What letter do you guess?"
     @guess = gets.chomp.upcase
     
-    while @guess.length > 1 || alphabet_array.include?(@guess) == false
+    # this checks if the guess is a single character and if that character is a letter!
+    while @guess.length != 1 || alphabet_array.include?(@guess) == false
         puts "Your guess is unusable, please guess again!"
         @guess = gets.chomp
     end
 
-
-    puts @guess
+    # echoes guess to user
+    puts "Your guess was #{ @guess }."
 
 
   end
