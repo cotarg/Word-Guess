@@ -11,7 +11,6 @@ class WordGuess
   def guess
     get_input
     check_letter
-
   end
 
   # don't mess with this until we refactor
@@ -48,15 +47,19 @@ class WordGuess
         for index in 0..@word.length - 1
             if @word[index] == @guess
                 # send to game board array
+        puts "What a great guess!"
+        puts "Good job!"
     else
       #guess is wrong
+      @wrong_count -= 1
       puts "You have made a terrible guess!"
       puts "How could you pick that letter?!"
-      puts "You have #{ @wrong_count - 1 } guesses left."
+      puts "You have #{ @wrong_count } guesses left."
     end
 
-    
-
+    def more_tries?
+        @wrong_count >= 1
+    end
 
   end
 
