@@ -7,7 +7,8 @@ class WordGuess
   def initialize
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
-    @word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
+    @pick_word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
+    @word = @pick_word.upcase 
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
@@ -45,17 +46,17 @@ class WordGuess
 
     # this checks if the guess is a single character and if that character is a letter!
     while @guess.length > 1
-      if @guess == @word
+      if @guess == @word.upcase
         win_game
       else
         #second time we use this- refactor into a method?
         @wrong_count -= 1
         puts "You have made a terrible guess!"
         puts "How could you pick that letter?!"
-        
+
         update_board
         puts "You have #{ @wrong_count } guesses left."
-        # infine loop!!!!
+        @guess = gets.chomp.upcase
 
       end
     end
@@ -117,7 +118,7 @@ class WordGuess
 
   def win_game
     #call board drawing
-    @wrong_count += 1
+    @wrong_count = 6
     update_board
     puts "YAY! YOU WIN! Your prize is an elephant hotdog!"
     exit
@@ -125,7 +126,7 @@ class WordGuess
 
   def lose_game
     #call board drawing
-    wrong_count -= 1
+    wrong_count = 0
     update_board
     puts "OH, NO! YOU LOSE!! Your prize is stinky socks..."
     exit
@@ -161,7 +162,7 @@ class WordGuess
       puts pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink
       puts pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink
       puts pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink
-      puts @word_so_far      
+      puts @word_so_far
 
     when 5
       puts pac_man_one + dot_one + dot_one + dot_one + dot_one
@@ -212,7 +213,7 @@ class WordGuess
       puts ghost_fiv.colorize(:yellow).blink + ghost_fiv.colorize(:magenta).blink + ghost_fiv.colorize(:blue).blink + ghost_fiv.colorize(:red).blink + ghost_fiv.colorize(:green).blink
       puts ghost_six + ghost_six + ghost_one + ghost_six + ghost_six
       puts @word_so_far
-            
+
     else
       puts "I don't know what's going on!"
       exit
@@ -220,4 +221,3 @@ class WordGuess
     end
   end
 end
-
