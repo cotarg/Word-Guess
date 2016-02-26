@@ -11,9 +11,19 @@ class WordGuess
     @word_so_far = #make it ___, figure out how to base this on word.length
   end
 
+  def play_the_game
+    while @wrong_count >= 1
+      guess
+    end
+  end
+
+
+  private
   def guess
     get_input
     check_letter
+    word_done
+    more_tries
   end
 
   # don't mess with this until we refactor
@@ -30,12 +40,10 @@ class WordGuess
         puts "Your guess is unusable, please guess again!"
         @guess = gets.chomp
     end
-
     # echoes guess to user
     puts "Your guess was #{ @guess }."
   end
 
-  private
   def check_letter
 
     unless @used_letters.include?(@guess) == false
@@ -66,14 +74,15 @@ class WordGuess
       @wrong_count >= 1
   end
 
+  def word_done?
+    @word_so_far == @word_so_far
+  end
+
 
   def update_word
       @word_so_far[index] = @guess
     end
   end
-
-
-
 end
 
 
