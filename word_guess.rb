@@ -1,7 +1,7 @@
 
 class WordGuess
   # make word so far available to other classes to use
-  attr_accessor :word_so_far, :used_letters
+  attr_accessor :word_so_far, :used_letters, :wrong_count
 
   def initialize
     @guess = ""
@@ -90,6 +90,6 @@ class GameBoard
     # display remaining chances to get it wrong
   end
 
-  
+
 
 end
