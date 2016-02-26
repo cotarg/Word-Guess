@@ -1,5 +1,8 @@
 
 class WordGuess
+  # make word so far available to other classes to use
+  attr_accessor :word_so_far, :used_letters
+
   def initialize
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
@@ -40,7 +43,7 @@ class WordGuess
         puts "Please guess again!"
         @guess = gets.chomp
     else
-         # add letter to used letters array
+        # add letter to used letters array
         @used_letters.push(@guess)
     end
 
@@ -48,7 +51,6 @@ class WordGuess
         for index in 0..@word.length - 1
             if @word[index] == @guess
               update_word 
-                # send to game board array
         puts "What a great guess!"
         puts "Good job!"
     else
@@ -76,5 +78,18 @@ end
 
 
 class GameBoard
+
+  def initialize
+  end
+
+  def update_board
+    # get the word_so_far
+
+    # draw the updated board, using word_so_far and used letters 
+
+    # display remaining chances to get it wrong
+  end
+
+  
 
 end
