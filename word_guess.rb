@@ -8,14 +8,15 @@ class WordGuess
     @wrong_count = 5 # Maybe will change this difficulty level
     @word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
     @used_letters = []
-    @word_so_far = #make it ___, figure out how to base this on word.length
+    @word_so_far = "___"#make it ___, figure out how to base this on word.length
+    #Add dictionary 
   end
 
   def play_the_game
     until @wrong_count == 0
       guess
     end
-    lose_game 
+    lose_game
   end
 
 
@@ -64,6 +65,8 @@ class WordGuess
         for index in 0..@word.length - 1
             if @word[index] == @guess
               update_word
+            end
+        end
         puts "What a great guess!"
         puts "Good job!"
     else
@@ -86,7 +89,6 @@ class WordGuess
 
   def update_word
       @word_so_far[index] = @guess
-    end
   end
 
   def win_game
