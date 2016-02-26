@@ -2,7 +2,9 @@ require 'colorize'
 
 class WordGuess
   # make word so far available to other classes to use
-  attr_accessor :word_so_far, :used_letters, :wrong_count
+  # remove global access to word if actually playing
+  # word is only available now for demo and debugging.
+  attr_accessor :word_so_far, :used_letters, :wrong_count, :word
 
   # creates a game object that contains all the game methods
   # sets the word
@@ -80,19 +82,15 @@ class WordGuess
     end
 
     if @word.upcase.include?(@guess)
-      puts @guess
-        for index in 0..@word.length - 1
-            puts index
-            puts @word[index]
-            if @word[index].upcase == @guess
-              # update_word #took it out of method just to check variable
-              @word_so_far[index] = @guess
-            end
+      for index in 0..@word.length - 1
+        if @word[index].upcase == @guess
+          # update_word #took it out of method just to check variable
+          @word_so_far[index] = @guess
         end
-        puts "What a great guess!"
-        puts "Good job!"
-        update_board
-        puts @word_so_far #just for testing
+      end
+      puts "What a great guess!"
+      puts "Good job!"
+      update_board
     else
       #guess is wrong
       @wrong_count -= 1
@@ -228,3 +226,8 @@ class WordGuess
     end
   end
 end
+
+game = WordGuess.new
+# this is for debugging
+game.word
+game.play_the_game
