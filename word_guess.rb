@@ -10,7 +10,7 @@ class WordGuess
     @word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
-    @word_so_far = "_ " * @word.length #make it ___, figure out how to base this on word.length
+    @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
     #Add dictionary
   end
 
@@ -66,11 +66,13 @@ class WordGuess
     if @word.upcase.include?(@guess)
         for index in 0..@word.length - 1
             if @word[index] == @guess
-              update_word #took it out of method just to check variable
+              # update_word #took it out of method just to check variable
+              @word_so_far[index] = @guess
             end
         end
         puts "What a great guess!"
         puts "Good job!"
+        puts @word_so_far #just for testing
     else
       #guess is wrong
       @wrong_count -= 1
@@ -85,13 +87,13 @@ class WordGuess
   end
 
   def word_done?
-    @word_so_far == @word
+    @word_so_far == @word.upcase
   end
 
 
-  def update_word
-      @word_so_far[index] = @guess
-  end
+  # def update_word
+  #     @word_so_far[index] = @guess #
+  # end
 
   def win_game
     #call board drawing
