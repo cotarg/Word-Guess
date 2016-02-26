@@ -44,6 +44,18 @@ class WordGuess
     @guess = gets.chomp.upcase
 
     # this checks if the guess is a single character and if that character is a letter!
+    while @guess.length > 1
+      if @guess == @word
+        win_game
+      else
+        #second time we use this- refactor into a method?
+        @wrong_count -= 1
+        puts "You have made a terrible guess!"
+        puts "How could you pick that letter?!"
+        puts "You have #{ @wrong_count } guesses left."
+        # infine loop!!!!
+      end
+    end
     while @guess.length != 1 || @alphabet_array.include?(@guess) == false
         puts "Your guess is unusable, please guess again!"
         @guess = gets.chomp.upcase
