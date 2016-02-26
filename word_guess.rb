@@ -4,6 +4,8 @@ class WordGuess
   # make word so far available to other classes to use
   attr_accessor :word_so_far, :used_letters, :wrong_count
 
+  # creates a game object that contains all the game methods
+  # sets the word
   def initialize
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
@@ -15,6 +17,7 @@ class WordGuess
     #Add dictionary
   end
 
+  # this method enables playing the game
   def play_the_game
     until @wrong_count == 0
       guess
@@ -34,16 +37,12 @@ class WordGuess
     end
   end
 
-  # don't mess with this until we refactor
   def get_input
-
-    # figure out the alphabet array and how to use a range
-
 
     puts "What letter do you guess?"
     @guess = gets.chomp.upcase
 
-    # this checks if the guess is a single character and if that character is a letter!
+    # this checks if you guessed the right word.
     while @guess.length > 1
       if @guess == @word.upcase
         win_game
@@ -52,13 +51,14 @@ class WordGuess
         @wrong_count -= 1
         puts "You have made a terrible guess!"
         puts "How could you pick that letter?!"
-
+        @used_letters.push(@guess)
         update_board
         puts "You have #{ @wrong_count } guesses left."
         @guess = gets.chomp.upcase
-
       end
     end
+
+    # this checks if the guess is a single character and if that character is a letter!
     while @guess.length != 1 || @alphabet_array.include?(@guess) == false
         puts "Your guess is unusable, please guess again!"
         @guess = gets.chomp.upcase
@@ -67,6 +67,7 @@ class WordGuess
     puts "Your guess was #{ @guess }."
   end
 
+  # this checks if the letter is in the word, and if you already guessed it.
   def check_letter
 
     unless @used_letters.include?(@guess) == false
@@ -102,6 +103,7 @@ class WordGuess
     end
   end
 
+  # this checks if you have more wrong guesses available
   def more_tries?
       @wrong_count >= 1
   end
@@ -110,11 +112,7 @@ class WordGuess
     @word_so_far == @word.upcase
   end
 
-
-  # def update_word
-  #     @word_so_far[index] = @guess #
-  # end
-
+  # this prints the winning game board
   def win_game
     #call board drawing
     @wrong_count = 6
@@ -123,6 +121,7 @@ class WordGuess
     exit
   end
 
+  # this prints the losing game board
   def lose_game
     #call board drawing
     wrong_count = 0
@@ -131,6 +130,7 @@ class WordGuess
     exit
   end
 
+  # this prints the game boards and updates them.
   def update_board
     ghost_one = "=======".colorize(:cyan)
     ghost_two = "   .-. "
@@ -155,12 +155,12 @@ class WordGuess
 
     case @wrong_count
     when 6
-      puts pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink
+      puts pac_man_one + pac_man_one + pac_man_one + pac_man_one + pac_man_one
       puts pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink
       puts pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink
       puts pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink
       puts pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink
-      puts pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink
+      puts pac_man_six + pac_man_six + pac_man_six + pac_man_six + pac_man_six
       puts @word_so_far
 
     when 5
