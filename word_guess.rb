@@ -67,7 +67,7 @@ class WordGuess
 
   def update_word
     for index in 0..@word.length - 1
-      @word[index] = @guess
+      @word_so_far[index] = @guess
     end
   end
 
