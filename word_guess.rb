@@ -47,7 +47,7 @@ class WordGuess
     if @word.include?(@guess)
         for index in 0..@word.length - 1
             if @word[index] == @guess
-                #update word
+              update_word 
                 # send to game board array
         puts "What a great guess!"
         puts "Good job!"
@@ -66,7 +66,6 @@ class WordGuess
   end
 
   def update_word
-    for index in 0..@word.length - 1
       @word_so_far[index] = @guess
     end
   end
