@@ -52,8 +52,11 @@ class WordGuess
         @wrong_count -= 1
         puts "You have made a terrible guess!"
         puts "How could you pick that letter?!"
+        
+        update_board
         puts "You have #{ @wrong_count } guesses left."
         # infine loop!!!!
+
       end
     end
     while @guess.length != 1 || @alphabet_array.include?(@guess) == false
@@ -87,12 +90,14 @@ class WordGuess
         end
         puts "What a great guess!"
         puts "Good job!"
+        update_board
         puts @word_so_far #just for testing
     else
       #guess is wrong
       @wrong_count -= 1
       puts "You have made a terrible guess!"
       puts "How could you pick that letter?!"
+      update_board
       puts "You have #{ @wrong_count } guesses left."
     end
   end
@@ -112,21 +117,28 @@ class WordGuess
 
   def win_game
     #call board drawing
+    puts pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink
+    puts pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink
+    puts pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink
+    puts pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink
+    puts pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink
+    puts pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink
+    puts @word_so_far
     puts "YAY! YOU WIN! Your prize is an elephant hotdog!"
     exit
   end
 
   def lose_game
     #call board drawing
+      puts ghost_one + ghost_one + ghost_one + ghost_one + ghost_one
+      puts ghost_two.colorize(:yellow).blink + ghost_two.colorize(:magenta).blink + ghost_two.colorize(:blue).blink + ghost_two.colorize(:red).blink + ghost_two.colorize(:green).blink
+      puts ghost_thr.colorize(:yellow).blink + ghost_thr.colorize(:magenta).blink + ghost_thr.colorize(:blue).blink + ghost_thr.colorize(:red).blink + ghost_thr.colorize(:green).blink
+      puts ghost_fou.colorize(:yellow).blink + ghost_fou.colorize(:magenta).blink + ghost_fou.colorize(:blue).blink + ghost_fou.colorize(:red).blink + ghost_fou.colorize(:green).blink
+      puts ghost_fiv.colorize(:yellow).blink + ghost_fiv.colorize(:magenta).blink + ghost_fiv.colorize(:blue).blink + ghost_fiv.colorize(:red).blink + ghost_fiv.colorize(:green).blink
+      puts ghost_six + ghost_six + ghost_one + ghost_six + ghost_six
+      puts @word_so_far
     puts "OH, NO! YOU LOSE!! Your prize is stinky socks..."
     exit
-  end
-end
-
-
-class GameBoard
-
-  def initialize
   end
 
   def update_board
@@ -138,6 +150,7 @@ class GameBoard
       puts pac_man_fou + dot_fou + dot_fou + dot_fou + dot_fou
       puts pac_man_fiv + dot_fiv + dot_fiv + dot_fiv + dot_fiv
       puts pac_man_six + dot_six + dot_six + dot_six + dot_six
+      puts @word_so_far
     when 4
       puts pac_man_one + dot_one + dot_one + dot_one + ghost_one
       puts pac_man_two + dot_two + dot_two + dot_two + ghost_two.colorize(:green)
@@ -145,6 +158,7 @@ class GameBoard
       puts pac_man_fou + dot_fou + dot_fou + dot_fou + ghost_fou.colorize(:green)
       puts pac_man_fiv + dot_fiv + dot_fiv + dot_fiv + ghost_fiv.colorize(:green)
       puts pac_man_six + dot_six + dot_six + dot_six + ghost_six
+      puts @word_so_far
     when 3
       puts dot_one + dot_one + ghost_one + ghost_one + pac_man_one
       puts pac_man_two + dot_two + dot_two + ghost_two.colorize(:red) + ghost_two.colorize(:green)
@@ -152,6 +166,7 @@ class GameBoard
       puts pac_man_fou + dot_fou + dot_fou + ghost_fou.colorize(:red) + ghost_fou.colorize(:green)
       puts pac_man_fiv + dot_fiv + dot_fiv + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts dot_six + dot_six + ghost_six + ghost_six + pac_man_six
+      puts @word_so_far
     when 2
       puts ghost_one + ghost_one + ghost_one + pac_man_one + dot_one
       puts pac_man_two + dot_two + ghost_two.colorize(:blue) + ghost_two.colorize(:red) + ghost_two.colorize(:green)
@@ -159,6 +174,7 @@ class GameBoard
       puts pac_man_fou + dot_fou + ghost_fou.colorize(:blue) + ghost_fou.colorize(:red) + ghost_fou.colorize(:green)
       puts pac_man_fiv + dot_fiv + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts ghost_six + ghost_six + ghost_six + pac_man_six + dot_six
+      puts @word_so_far
     when 1
       puts pac_man_one + ghost_one + ghost_one + ghost_one + ghost_one
       puts pac_man_two + ghost_two.colorize(:magenta) + ghost_two.colorize(:blue) + ghost_two.colorize(:red) + ghost_two.colorize(:green)
@@ -166,16 +182,12 @@ class GameBoard
       puts pac_man_fou + ghost_fou.colorize(:magenta) + ghost_fou.colorize(:blue) + ghost_fou.colorize(:red) + ghost_fou.colorize(:green)
       puts pac_man_fiv + ghost_fiv.colorize(:magenta) + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts pac_man_six + ghost_six + ghost_six + ghost_six + ghost_six
-    when 0
-      puts ghost_one + ghost_one + ghost_one + ghost_one + ghost_one
-      puts ghost_two.colorize(:yellow).blink + ghost_two.colorize(:magenta).blink + ghost_two.colorize(:blue).blink + ghost_two.colorize(:red).blink + ghost_two.colorize(:green).blink
-      puts ghost_thr.colorize(:yellow).blink + ghost_thr.colorize(:magenta).blink + ghost_thr.colorize(:blue).blink + ghost_thr.colorize(:red).blink + ghost_thr.colorize(:green).blink
-      puts ghost_fou.colorize(:yellow).blink + ghost_fou.colorize(:magenta).blink + ghost_fou.colorize(:blue).blink + ghost_fou.colorize(:red).blink + ghost_fou.colorize(:green).blink
-      puts ghost_fiv.colorize(:yellow).blink + ghost_fiv.colorize(:magenta).blink + ghost_fiv.colorize(:blue).blink + ghost_fiv.colorize(:red).blink + ghost_fiv.colorize(:green).blink
-      puts ghost_six + ghost_six + ghost_one + ghost_six + ghost_six
+      puts @word_so_far
+    else
+      puts "I don't know what's going on!"
+      exit
+
     end
   end
-
-
-
 end
+
