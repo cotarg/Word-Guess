@@ -63,7 +63,7 @@ class WordGuess
         @used_letters.push(@guess)
     end
 
-    if @word.include?(@guess)
+    if @word.upcase.include?(@guess)
         for index in 0..@word.length - 1
             if @word[index] == @guess
               update_word #took it out of method just to check variable
