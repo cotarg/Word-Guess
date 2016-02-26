@@ -12,9 +12,10 @@ class WordGuess
   end
 
   def play_the_game
-    while @wrong_count >= 1
+    until @wrong_count == 0
       guess
     end
+    lose_game 
   end
 
 
@@ -89,12 +90,16 @@ class WordGuess
   end
 
   def win_game
-
+    #call board drawing
+    puts "YAY! YOU WIN! Your prize is an elephant hotdog!"
+    exit
   end
 
   def lose_game
-
-  end 
+    #call board drawing
+    puts "OH, NO! YOU LOSE!! Your prize is stinky socks..."
+    exit
+  end
 end
 
 
