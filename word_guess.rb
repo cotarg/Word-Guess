@@ -22,8 +22,12 @@ class WordGuess
   def guess
     get_input
     check_letter
-    word_done
-    more_tries
+    if word_done
+      win_game
+    end
+    if !more_tries
+      lose_game
+    end
   end
 
   # don't mess with this until we refactor
@@ -58,7 +62,7 @@ class WordGuess
     if @word.include?(@guess)
         for index in 0..@word.length - 1
             if @word[index] == @guess
-              update_word 
+              update_word
         puts "What a great guess!"
         puts "Good job!"
     else
@@ -83,6 +87,14 @@ class WordGuess
       @word_so_far[index] = @guess
     end
   end
+
+  def win_game
+
+  end
+
+  def lose_game
+
+  end 
 end
 
 
@@ -94,7 +106,7 @@ class GameBoard
   def update_board
     # get the word_so_far
 
-    # draw the updated board, using word_so_far and used letters 
+    # draw the updated board, using word_so_far and used letters
 
     # display remaining chances to get it wrong
   end
