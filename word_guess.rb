@@ -117,26 +117,16 @@ class WordGuess
 
   def win_game
     #call board drawing
-    puts pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink
-    puts pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink
-    puts pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink
-    puts pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink
-    puts pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink
-    puts pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink
-    puts @word_so_far
+    @wrong_count += 1
+    update_board
     puts "YAY! YOU WIN! Your prize is an elephant hotdog!"
     exit
   end
 
   def lose_game
     #call board drawing
-      puts ghost_one + ghost_one + ghost_one + ghost_one + ghost_one
-      puts ghost_two.colorize(:yellow).blink + ghost_two.colorize(:magenta).blink + ghost_two.colorize(:blue).blink + ghost_two.colorize(:red).blink + ghost_two.colorize(:green).blink
-      puts ghost_thr.colorize(:yellow).blink + ghost_thr.colorize(:magenta).blink + ghost_thr.colorize(:blue).blink + ghost_thr.colorize(:red).blink + ghost_thr.colorize(:green).blink
-      puts ghost_fou.colorize(:yellow).blink + ghost_fou.colorize(:magenta).blink + ghost_fou.colorize(:blue).blink + ghost_fou.colorize(:red).blink + ghost_fou.colorize(:green).blink
-      puts ghost_fiv.colorize(:yellow).blink + ghost_fiv.colorize(:magenta).blink + ghost_fiv.colorize(:blue).blink + ghost_fiv.colorize(:red).blink + ghost_fiv.colorize(:green).blink
-      puts ghost_six + ghost_six + ghost_one + ghost_six + ghost_six
-      puts @word_so_far
+    wrong_count -= 1
+    update_board
     puts "OH, NO! YOU LOSE!! Your prize is stinky socks..."
     exit
   end
@@ -162,8 +152,17 @@ class WordGuess
     dot_fou = "   '..'  "
     dot_fiv = "         "
     dot_six = "=========".colorize(:cyan)
-    
+
     case @wrong_count
+    when 6
+      puts pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink + pac_man_one.blink
+      puts pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink + pac_man_two.blink
+      puts pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink + pac_man_thr.blink
+      puts pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink + pac_man_fou.blink
+      puts pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink + pac_man_fiv.blink
+      puts pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink + pac_man_six.blink
+      puts @word_so_far      
+
     when 5
       puts pac_man_one + dot_one + dot_one + dot_one + dot_one
       puts pac_man_two + dot_two + dot_two + dot_two + dot_two
@@ -204,6 +203,16 @@ class WordGuess
       puts pac_man_fiv + ghost_fiv.colorize(:magenta) + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts pac_man_six + ghost_six + ghost_six + ghost_six + ghost_six
       puts @word_so_far
+
+    when 0
+      puts ghost_one + ghost_one + ghost_one + ghost_one + ghost_one
+      puts ghost_two.colorize(:yellow).blink + ghost_two.colorize(:magenta).blink + ghost_two.colorize(:blue).blink + ghost_two.colorize(:red).blink + ghost_two.colorize(:green).blink
+      puts ghost_thr.colorize(:yellow).blink + ghost_thr.colorize(:magenta).blink + ghost_thr.colorize(:blue).blink + ghost_thr.colorize(:red).blink + ghost_thr.colorize(:green).blink
+      puts ghost_fou.colorize(:yellow).blink + ghost_fou.colorize(:magenta).blink + ghost_fou.colorize(:blue).blink + ghost_fou.colorize(:red).blink + ghost_fou.colorize(:green).blink
+      puts ghost_fiv.colorize(:yellow).blink + ghost_fiv.colorize(:magenta).blink + ghost_fiv.colorize(:blue).blink + ghost_fiv.colorize(:red).blink + ghost_fiv.colorize(:green).blink
+      puts ghost_six + ghost_six + ghost_one + ghost_six + ghost_six
+      puts @word_so_far
+            
     else
       puts "I don't know what's going on!"
       exit
