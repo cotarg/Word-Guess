@@ -142,6 +142,27 @@ class WordGuess
   end
 
   def update_board
+    ghost_one = "=======".colorize(:cyan)
+    ghost_two = "   .-. "
+    ghost_thr = "  |OO |"
+    ghost_fou = "  |   |"
+    ghost_fiv = "  '^^^'"
+    ghost_six = "=======".colorize(:cyan)
+
+    pac_man_one = "=========".colorize(:cyan)
+    pac_man_two = "    .--. ".colorize(:yellow)
+    pac_man_thr = "   / _.-'".colorize(:yellow)
+    pac_man_fou = "   |  '-.".colorize(:yellow)
+    pac_man_fiv = "    '--' ".colorize(:yellow)
+    pac_man_six = "=========".colorize(:cyan)
+
+    dot_one = "=========".colorize(:cyan)
+    dot_two = "         "
+    dot_thr = "   .''.  "
+    dot_fou = "   '..'  "
+    dot_fiv = "         "
+    dot_six = "=========".colorize(:cyan)
+    
     case @wrong_count
     when 5
       puts pac_man_one + dot_one + dot_one + dot_one + dot_one
