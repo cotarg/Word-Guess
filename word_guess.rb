@@ -142,7 +142,7 @@ class WordGuess
   end
 
   def update_board
-    case # name the variable
+    case @wrong_count
     when 5
       puts pac_man_one + dot_one + dot_one + dot_one + dot_one
       puts pac_man_two + dot_two + dot_two + dot_two + dot_two
