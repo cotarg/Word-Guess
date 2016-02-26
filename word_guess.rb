@@ -1,3 +1,4 @@
+require 'colorize'
 
 class WordGuess
   # make word so far available to other classes to use
@@ -7,6 +8,7 @@ class WordGuess
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
     @word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
+    @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "___"#make it ___, figure out how to base this on word.length
     #Add dictionary 
@@ -24,10 +26,10 @@ class WordGuess
   def guess
     get_input
     check_letter
-    if word_done
+    if word_done?
       win_game
     end
-    if !more_tries
+    if !more_tries?
       lose_game
     end
   end
@@ -36,7 +38,7 @@ class WordGuess
   def get_input
 
     # figure out the alphabet array and how to use a range
-    @alphabet_array = ("A".."Z").to_a
+    
 
     puts "What letter do you guess?"
     @guess = gets.chomp.upcase
