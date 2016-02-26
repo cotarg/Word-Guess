@@ -10,7 +10,7 @@ class WordGuess
     @word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
-    @word_so_far = "___"#make it ___, figure out how to base this on word.length
+    @word_so_far = "_ " * @word.length #make it ___, figure out how to base this on word.length
     #Add dictionary
   end
 
