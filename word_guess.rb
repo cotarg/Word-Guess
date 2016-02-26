@@ -1,23 +1,18 @@
 require 'colorize'
 
 class WordGuess
-  # make word so far available to other classes to use
-  # remove global access to word if actually playing
-  # word is only available now for demo and debugging.
-  attr_accessor :word_so_far, :used_letters, :wrong_count, :word
 
   # creates a game object that contains all the game methods
   # sets the word
   def initialize
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
-    @pick_word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
+    @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
     @word = @pick_word.upcase
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
     update_board
-    #Add dictionary
   end
 
   # this method enables playing the game
@@ -116,7 +111,7 @@ class WordGuess
     #call board drawing
     @wrong_count = 6
     update_board
-    puts "YAY! YOU WIN! Your prize is an elephant hotdog!"
+    puts "YAY! YOU WIN! Your prize is an ".colorize(:yellow) + "ELEPHANT HOTDOG".colorize(:magenta)
     exit
   end
 
@@ -125,7 +120,7 @@ class WordGuess
     #call board drawing
     wrong_count = 0
     update_board
-    puts "OH, NO! YOU LOSE!! Your prize is stinky socks..."
+    puts "OH, NO! YOU LOSE!! Your prize is stinky socks...".colorize(:red)
     exit
   end
 
