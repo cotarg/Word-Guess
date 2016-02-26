@@ -36,7 +36,7 @@ class WordGuess
   def get_input
 
     # figure out the alphabet array and how to use a range
-    @alphabet_array = ['A', 'B', 'C']
+    @alphabet_array = ("A".."Z").to_a
 
     puts "What letter do you guess?"
     @guess = gets.chomp.upcase
