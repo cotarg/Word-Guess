@@ -111,11 +111,50 @@ class GameBoard
   end
 
   def update_board
-    # get the word_so_far
-
-    # draw the updated board, using word_so_far and used letters
-
-    # display remaining chances to get it wrong
+    case # name the variable 
+    when 5
+      puts pac_man_one + dot_one + dot_one + dot_one + dot_one
+      puts pac_man_two + dot_two + dot_two + dot_two + dot_two
+      puts pac_man_thr + dot_thr + dot_thr + dot_thr + dot_thr
+      puts pac_man_fou + dot_fou + dot_fou + dot_fou + dot_fou
+      puts pac_man_fiv + dot_fiv + dot_fiv + dot_fiv + dot_fiv
+      puts pac_man_six + dot_six + dot_six + dot_six + dot_six
+    when 4
+      puts pac_man_one + dot_one + dot_one + dot_one + ghost_one
+      puts pac_man_two + dot_two + dot_two + dot_two + ghost_two.colorize(:green)
+      puts pac_man_thr + dot_thr + dot_thr + dot_thr + ghost_thr.colorize(:green)
+      puts pac_man_fou + dot_fou + dot_fou + dot_fou + ghost_fou.colorize(:green)
+      puts pac_man_fiv + dot_fiv + dot_fiv + dot_fiv + ghost_fiv.colorize(:green)
+      puts pac_man_six + dot_six + dot_six + dot_six + ghost_six
+    when 3
+      puts dot_one + dot_one + ghost_one + ghost_one + pac_man_one
+      puts pac_man_two + dot_two + dot_two + ghost_two.colorize(:red) + ghost_two.colorize(:green)
+      puts pac_man_thr + dot_thr + dot_thr + ghost_thr.colorize(:red) + ghost_thr.colorize(:green)
+      puts pac_man_fou + dot_fou + dot_fou + ghost_fou.colorize(:red) + ghost_fou.colorize(:green)
+      puts pac_man_fiv + dot_fiv + dot_fiv + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
+      puts dot_six + dot_six + ghost_six + ghost_six + pac_man_six
+    when 2
+      puts ghost_one + ghost_one + ghost_one + pac_man_one + dot_one
+      puts pac_man_two + dot_two + ghost_two.colorize(:blue) + ghost_two.colorize(:red) + ghost_two.colorize(:green)
+      puts pac_man_thr + dot_thr + ghost_thr.colorize(:blue) + ghost_thr.colorize(:red) + ghost_thr.colorize(:green)
+      puts pac_man_fou + dot_fou + ghost_fou.colorize(:blue) + ghost_fou.colorize(:red) + ghost_fou.colorize(:green)
+      puts pac_man_fiv + dot_fiv + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
+      puts ghost_six + ghost_six + ghost_six + pac_man_six + dot_six
+    when 1
+      puts pac_man_one + ghost_one + ghost_one + ghost_one + ghost_one
+      puts pac_man_two + ghost_two.colorize(:magenta) + ghost_two.colorize(:blue) + ghost_two.colorize(:red) + ghost_two.colorize(:green)
+      puts pac_man_thr + ghost_thr.colorize(:magenta) + ghost_thr.colorize(:blue) + ghost_thr.colorize(:red) + ghost_thr.colorize(:green)
+      puts pac_man_fou + ghost_fou.colorize(:magenta) + ghost_fou.colorize(:blue) + ghost_fou.colorize(:red) + ghost_fou.colorize(:green)
+      puts pac_man_fiv + ghost_fiv.colorize(:magenta) + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
+      puts pac_man_six + ghost_six + ghost_six + ghost_six + ghost_six
+    when 0
+      puts ghost_one + ghost_one + ghost_one + ghost_one + ghost_one
+      puts ghost_two.colorize(:yellow).blink + ghost_two.colorize(:magenta).blink + ghost_two.colorize(:blue).blink + ghost_two.colorize(:red).blink + ghost_two.colorize(:green).blink
+      puts ghost_thr.colorize(:yellow).blink + ghost_thr.colorize(:magenta).blink + ghost_thr.colorize(:blue).blink + ghost_thr.colorize(:red).blink + ghost_thr.colorize(:green).blink
+      puts ghost_fou.colorize(:yellow).blink + ghost_fou.colorize(:magenta).blink + ghost_fou.colorize(:blue).blink + ghost_fou.colorize(:red).blink + ghost_fou.colorize(:green).blink
+      puts ghost_fiv.colorize(:yellow).blink + ghost_fiv.colorize(:magenta).blink + ghost_fiv.colorize(:blue).blink + ghost_fiv.colorize(:red).blink + ghost_fiv.colorize(:green).blink
+      puts ghost_six + ghost_six + ghost_one + ghost_six + ghost_six
+    end
   end
 
 
