@@ -57,15 +57,18 @@ class WordGuess
     unless @used_letters.include?(@guess) == false
         puts "You have already guessed this letter!"
         puts "Please guess again!"
-        @guess = gets.chomp
+        @guess = gets.chomp.upcase
     else
         # add letter to used letters array
         @used_letters.push(@guess)
     end
 
     if @word.upcase.include?(@guess)
+      puts @guess
         for index in 0..@word.length - 1
-            if @word[index] == @guess
+            puts index
+            puts @word[index]
+            if @word[index].upcase == @guess
               # update_word #took it out of method just to check variable
               @word_so_far[index] = @guess
             end
