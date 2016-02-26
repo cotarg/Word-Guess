@@ -8,7 +8,7 @@ class WordGuess
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
     @pick_word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
-    @word = @pick_word.upcase 
+    @word = @pick_word.upcase
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
@@ -21,7 +21,6 @@ class WordGuess
     end
     lose_game
   end
-
 
   private
   def guess
@@ -172,6 +171,7 @@ class WordGuess
       puts pac_man_fiv + dot_fiv + dot_fiv + dot_fiv + dot_fiv
       puts pac_man_six + dot_six + dot_six + dot_six + dot_six
       puts @word_so_far
+      puts "The letters you have guessed so far are: #{@used_letters}"
     when 4
       puts pac_man_one + dot_one + dot_one + dot_one + ghost_one
       puts pac_man_two + dot_two + dot_two + dot_two + ghost_two.colorize(:green)
@@ -180,6 +180,8 @@ class WordGuess
       puts pac_man_fiv + dot_fiv + dot_fiv + dot_fiv + ghost_fiv.colorize(:green)
       puts pac_man_six + dot_six + dot_six + dot_six + ghost_six
       puts @word_so_far
+      puts "The letters you have guessed so far are: #{@used_letters}"
+
     when 3
       puts dot_one + dot_one + ghost_one + ghost_one + pac_man_one
       puts pac_man_two + dot_two + dot_two + ghost_two.colorize(:red) + ghost_two.colorize(:green)
@@ -188,6 +190,8 @@ class WordGuess
       puts pac_man_fiv + dot_fiv + dot_fiv + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts dot_six + dot_six + ghost_six + ghost_six + pac_man_six
       puts @word_so_far
+      puts "The letters you have guessed so far are: #{@used_letters}"
+
     when 2
       puts ghost_one + ghost_one + ghost_one + pac_man_one + dot_one
       puts pac_man_two + dot_two + ghost_two.colorize(:blue) + ghost_two.colorize(:red) + ghost_two.colorize(:green)
@@ -196,6 +200,8 @@ class WordGuess
       puts pac_man_fiv + dot_fiv + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts ghost_six + ghost_six + ghost_six + pac_man_six + dot_six
       puts @word_so_far
+      puts "The letters you have guessed so far are: #{@used_letters}"
+
     when 1
       puts pac_man_one + ghost_one + ghost_one + ghost_one + ghost_one
       puts pac_man_two + ghost_two.colorize(:magenta) + ghost_two.colorize(:blue) + ghost_two.colorize(:red) + ghost_two.colorize(:green)
@@ -204,6 +210,7 @@ class WordGuess
       puts pac_man_fiv + ghost_fiv.colorize(:magenta) + ghost_fiv.colorize(:blue) + ghost_fiv.colorize(:red) + ghost_fiv.colorize(:green)
       puts pac_man_six + ghost_six + ghost_six + ghost_six + ghost_six
       puts @word_so_far
+      puts "The letters you have guessed so far are: #{@used_letters}"
 
     when 0
       puts ghost_one + ghost_one + ghost_one + ghost_one + ghost_one
