@@ -26,7 +26,7 @@ class WordGuess
   def guess
     get_input
     check_letter
-    if word_done? # this is true when shouldnt
+    if word_done?
       win_game
     end
     if !more_tries?
@@ -46,7 +46,7 @@ class WordGuess
     # this checks if the guess is a single character and if that character is a letter!
     while @guess.length != 1 || @alphabet_array.include?(@guess) == false
         puts "Your guess is unusable, please guess again!"
-        @guess = gets.chomp
+        @guess = gets.chomp.upcase
     end
     # echoes guess to user
     puts "Your guess was #{ @guess }."
