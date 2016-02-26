@@ -26,7 +26,7 @@ class WordGuess
   def guess
     get_input
     check_letter
-    if word_done?
+    if word_done? # this is true when shouldnt
       win_game
     end
     if !more_tries?
@@ -66,8 +66,7 @@ class WordGuess
     if @word.include?(@guess)
         for index in 0..@word.length - 1
             if @word[index] == @guess
-              @word_so_far[index] = @guess #took it out of method just to check variable 
-
+              update_word #took it out of method just to check variable
             end
         end
         puts "What a great guess!"
@@ -86,12 +85,12 @@ class WordGuess
   end
 
   def word_done?
-    @word_so_far == @word_so_far
+    @word_so_far == @word
   end
 
 
   def update_word
-      #@word_so_far[index] = @guess
+      @word_so_far[index] = @guess
   end
 
   def win_game
