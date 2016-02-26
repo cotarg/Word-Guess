@@ -16,6 +16,7 @@ class WordGuess
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
+    update_board
     #Add dictionary
   end
 
@@ -228,6 +229,5 @@ class WordGuess
 end
 
 game = WordGuess.new
-# this is for debugging
-game.word
+puts "Welcome to the Pac-Man Word Guess! Please play starting now!"
 game.play_the_game
