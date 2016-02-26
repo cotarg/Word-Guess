@@ -11,7 +11,7 @@ class WordGuess
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "___"#make it ___, figure out how to base this on word.length
-    #Add dictionary 
+    #Add dictionary
   end
 
   def play_the_game
@@ -38,7 +38,7 @@ class WordGuess
   def get_input
 
     # figure out the alphabet array and how to use a range
-    
+
 
     puts "What letter do you guess?"
     @guess = gets.chomp.upcase
@@ -66,7 +66,8 @@ class WordGuess
     if @word.include?(@guess)
         for index in 0..@word.length - 1
             if @word[index] == @guess
-              update_word
+              @word_so_far[index] = @guess #took it out of method just to check variable 
+
             end
         end
         puts "What a great guess!"
@@ -90,7 +91,7 @@ class WordGuess
 
 
   def update_word
-      @word_so_far[index] = @guess
+      #@word_so_far[index] = @guess
   end
 
   def win_game
@@ -113,7 +114,7 @@ class GameBoard
   end
 
   def update_board
-    case # name the variable 
+    case # name the variable
     when 5
       puts pac_man_one + dot_one + dot_one + dot_one + dot_one
       puts pac_man_two + dot_two + dot_two + dot_two + dot_two
