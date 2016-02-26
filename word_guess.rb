@@ -1,12 +1,11 @@
 
-
 class WordGuess
   def initialize
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
     @word = ["dog", "cat", "person"].sample #make up a dictionary later, hash??
     @used_letters = []
-    @word_so_far = #make it ___
+    @word_so_far = #make it ___, figure out how to base this on word.length
   end
 
   def guess
@@ -33,6 +32,7 @@ class WordGuess
     puts "Your guess was #{ @guess }."
   end
 
+  private
   def check_letter
 
     unless @used_letters.include?(@guess) == false
@@ -58,12 +58,12 @@ class WordGuess
       puts "How could you pick that letter?!"
       puts "You have #{ @wrong_count } guesses left."
     end
-
-    def more_tries?
-        @wrong_count >= 1
-    end
-
   end
+
+  def more_tries?
+      @wrong_count >= 1
+  end
+
 
   def update_word
       @word_so_far[index] = @guess
