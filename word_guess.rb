@@ -5,20 +5,16 @@ class WordGuess
   # creates a game object that contains all the game methods
   # sets the word
   def initialize
-    @guess = ""
+    @guess = "" # initializes w/ empty guess
     @wrong_count = 5 # Maybe will change this difficulty level
-    @difficulty = ""
-    # commented out original pick word so we can try to implement difficulty levels
-    # @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
-    @pick_word = {easy: ["dog", "cat", "star"].sample, medium: ["pizza", "input", "coder"].sample, hard: ["birthday", "computation", "ubiquitous"].sample}
-    # commented out to implement difficulty levels
-    # @word = @pick_word.upcase
-    @word = ""
-    @alphabet_array = ("A".."Z").to_a
-    @used_letters = []
-    @word_so_far = ""
-    #@word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
-    #update_board
+    @difficulty = "" # init with empty difficulty so player can choose
+    @pick_word = {easy: ["dog", "cat", "star"].sample, 
+      medium: ["pizza", "input", "coder"].sample, 
+      hard: ["birthday", "computation", "ubiquitous"].sample} # selects a word for each difficulty
+    @word = "" # placeholder for word we will be guessing
+    @alphabet_array = ("A".."Z").to_a # letters to check guesses against
+    @used_letters = [] # place holder for guessed letters
+    @word_so_far = "" # placeholder to hold the word as it is guessed
   end
 
 
@@ -34,22 +30,24 @@ class WordGuess
 
   private
 
+  # this method defines the difficulty level and sets the word to guess
   def pick_a_word
     if @word == ""
-      # ask for difficulty level
       puts "What difficulty would you like to play at? There's easy(E), medium(M), or hard(H)!"
       print "Difficulty: "
       @difficulty = gets.chomp.upcase
       if @difficulty == "E" || @difficulty == "EASY"
-        @word = @pick_word[:easy]#.sample
+        @word = @pick_word[:easy]
         @word = @word.upcase
       elsif @difficulty == "M" || @difficulty == "MEDIUM"
-        @word = @pick_word[:medium]#sample
+        @word = @pick_word[:medium]
         @word = @word.upcase
       elsif @difficulty == "H" || @difficulty == "HARD"
-        @word = @pick_word[:hard]#.sample
+        @word = @pick_word[:hard]
         @word = @word.upcase
       else
+        # if they try to enter anything except a difficulty level 
+        # the game throws up and goes home
         puts "I don't know what you want, please start over!"
         exit
       end
@@ -57,6 +55,7 @@ class WordGuess
     end
   end
 
+  # this method operates getting guesses and checking them.
   def guess
     get_input
     check_letter
@@ -68,8 +67,8 @@ class WordGuess
     end
   end
 
+  # this method actually gets the input
   def get_input
-
     puts "What letter do you guess?"
     @guess = gets.chomp.upcase
 
