@@ -8,20 +8,21 @@ class WordGuess
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
     @difficulty = ""
-    # commented out original pick word so we can try to implement difficulty levels 
+    # commented out original pick word so we can try to implement difficulty levels
     # @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
-    @pick_word = ""
+    @pick_word = {easy: ["dog", "cat", "star"], medium: ["pizza", "input", "coder"], hard: ["birthday", "computation", "ubiquitous"]}
     # commented out to implement difficulty levels
     # @word = @pick_word.upcase
-    @word = "empty"
+    @word = ""
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
-    @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
-    update_board
+    @word_so_far = ""
+    #@word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
+    #update_board
   end
 
   def pick_a_word
-    if @pick_word == ""
+    if @word == ""
       # ask for difficulty level
       puts "What difficulty would you like to play at? There's easy(E), medium(M), or hard(H)!"
       print "Difficulty: "
@@ -39,11 +40,14 @@ class WordGuess
         puts "I don't know what you want, please start over!"
         exit
       end
-    end        
+      @word_so_far = "_" * @word.length
+    end
   end
 
   # this method enables playing the game
   def play_the_game
+    pick_a_word
+    update_board
     until @wrong_count == 0
       guess
     end
