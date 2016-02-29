@@ -15,6 +15,8 @@ class WordGuess
     @alphabet_array = ("A".."Z").to_a # letters to check guesses against
     @used_letters = [] # place holder for guessed letters
     @word_so_far = "" # placeholder to hold the word as it is guessed
+    @bad_prize = ["stinky socks", "moldy tofu", "rotten eggs", "more homework", "dirty diapers"].sample
+    @good_prize = ["elephant hotdog", "invisible pineapple", "expensive whiskey", "customized puppet of yourself"].sample
   end
 
 
@@ -144,7 +146,7 @@ class WordGuess
     @wrong_count = 6
     update_board
     message = "YAY! YOU WIN! Your prize is an "
-    message2 = "ELEPHANT HOTDOG"
+    message2 = "#{@good_prize}"
     puts message.colorize(:yellow) + message2.colorize(:magenta)
     system "say", message
     system "say", message2
@@ -156,7 +158,7 @@ class WordGuess
     #call board drawing
     wrong_count = 0
     # update_board
-    message = "OH, NO! YOU LOSE!! Your prize is stinky socks..."
+    message = "OH, NO! YOU LOSE!! Your prize is #{@bad_prize}..."
     puts message.colorize(:red)
     puts "The correct word was: #{@word.colorize(:yellow)}"
     system "say", message
