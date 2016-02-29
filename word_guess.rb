@@ -7,12 +7,23 @@ class WordGuess
   def initialize
     @guess = ""
     @wrong_count = 5 # Maybe will change this difficulty level
-    @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
+    @difficulty = ""
+    # commented out original pick word so we can try to implement difficulty levels 
+    # @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
+    @pick_word = ""
     @word = @pick_word.upcase
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
     update_board
+  end
+
+  def pick_a_word
+    if @pick_word == ""
+      # ask for difficulty level
+      puts "What difficulty would you like to play at? There's easy, medium, or hard!"
+      print "Difficulty: "
+      @difficulty = gets.chomp.upcase
   end
 
   # this method enables playing the game
