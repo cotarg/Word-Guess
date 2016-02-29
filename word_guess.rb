@@ -21,6 +21,19 @@ class WordGuess
     #update_board
   end
 
+
+  # this method enables playing the game
+  def play_the_game
+    pick_a_word
+    update_board
+    until @wrong_count == 0
+      guess
+    end
+    lose_game
+  end
+
+  private
+
   def pick_a_word
     if @word == ""
       # ask for difficulty level
@@ -44,17 +57,6 @@ class WordGuess
     end
   end
 
-  # this method enables playing the game
-  def play_the_game
-    pick_a_word
-    update_board
-    until @wrong_count == 0
-      guess
-    end
-    lose_game
-  end
-
-  private
   def guess
     get_input
     check_letter
