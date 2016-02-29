@@ -10,7 +10,7 @@ class WordGuess
     @difficulty = ""
     # commented out original pick word so we can try to implement difficulty levels
     # @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
-    @pick_word = {easy: ["dog", "cat", "star"], medium: ["pizza", "input", "coder"], hard: ["birthday", "computation", "ubiquitous"]}
+    @pick_word = {easy: ["dog", "cat", "star"].sample, medium: ["pizza", "input", "coder"].sample, hard: ["birthday", "computation", "ubiquitous"].sample}
     # commented out to implement difficulty levels
     # @word = @pick_word.upcase
     @word = ""
@@ -41,13 +41,13 @@ class WordGuess
       print "Difficulty: "
       @difficulty = gets.chomp.upcase
       if @difficulty == "E" || @difficulty == "EASY"
-        @word = @pick_word[:easy].sample
+        @word = @pick_word[:easy]#.sample
         @word = @word.upcase
       elsif @difficulty == "M" || @difficulty == "MEDIUM"
-        @word = @pick_word[:medium].sample
+        @word = @pick_word[:medium]#sample
         @word = @word.upcase
       elsif @difficulty == "H" || @difficulty == "HARD"
-        @word = @pick_word[:hard].sample
+        @word = @pick_word[:hard]#.sample
         @word = @word.upcase
       else
         puts "I don't know what you want, please start over!"
