@@ -8,8 +8,8 @@ class WordGuess
     @guess = "" # initializes w/ empty guess
     @wrong_count = 5 # Maybe will change this difficulty level
     @difficulty = "" # init with empty difficulty so player can choose
-    @pick_word = {easy: ["dog", "cat", "star"].sample, 
-      medium: ["pizza", "input", "coder"].sample, 
+    @pick_word = {easy: ["dog", "cat", "star"].sample,
+      medium: ["pizza", "input", "coder"].sample,
       hard: ["birthday", "computation", "ubiquitous"].sample} # selects a word for each difficulty
     @word = "" # placeholder for word we will be guessing
     @alphabet_array = ("A".."Z").to_a # letters to check guesses against
@@ -46,7 +46,7 @@ class WordGuess
         @word = @pick_word[:hard]
         @word = @word.upcase
       else
-        # if they try to enter anything except a difficulty level 
+        # if they try to enter anything except a difficulty level
         # the game throws up and goes home
         puts "I don't know what you want, please start over!"
         exit
@@ -143,7 +143,11 @@ class WordGuess
     #call board drawing
     @wrong_count = 6
     update_board
-    puts "YAY! YOU WIN! Your prize is an ".colorize(:yellow) + "ELEPHANT HOTDOG".colorize(:magenta)
+    message = "YAY! YOU WIN! Your prize is an "
+    message2 = "ELEPHANT HOTDOG"
+    puts message.colorize(:yellow) + message2.colorize(:magenta)
+    system "say", message
+    system "say", message2
     exit
   end
 
@@ -152,8 +156,10 @@ class WordGuess
     #call board drawing
     wrong_count = 0
     # update_board
-    puts "OH, NO! YOU LOSE!! Your prize is stinky socks...".colorize(:red)
+    message = "OH, NO! YOU LOSE!! Your prize is stinky socks..."
+    puts message.colorize(:red)
     puts "The correct word was: #{@word.colorize(:yellow)}"
+    system "say", message
     exit
   end
 
