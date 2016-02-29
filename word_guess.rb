@@ -119,8 +119,9 @@ class WordGuess
   def lose_game
     #call board drawing
     wrong_count = 0
-    update_board
+    # update_board
     puts "OH, NO! YOU LOSE!! Your prize is stinky socks...".colorize(:red)
+    puts "The correct word was: #{@word.colorize(:yellow)}"
     exit
   end
 
