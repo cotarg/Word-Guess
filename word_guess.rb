@@ -11,7 +11,9 @@ class WordGuess
     # commented out original pick word so we can try to implement difficulty levels 
     # @pick_word = ["dog", "cat", "person", "star", "team", "ruby", "code", "birthday", "jeremy"].sample #make up a dictionary later, hash??
     @pick_word = ""
-    @word = @pick_word.upcase
+    # commented out to implement difficulty levels
+    # @word = @pick_word.upcase
+    @word = "empty"
     @alphabet_array = ("A".."Z").to_a
     @used_letters = []
     @word_so_far = "_" * @word.length #make it ___, figure out how to base this on word.length
@@ -21,9 +23,23 @@ class WordGuess
   def pick_a_word
     if @pick_word == ""
       # ask for difficulty level
-      puts "What difficulty would you like to play at? There's easy, medium, or hard!"
+      puts "What difficulty would you like to play at? There's easy(E), medium(M), or hard(H)!"
       print "Difficulty: "
       @difficulty = gets.chomp.upcase
+      if @difficulty == "E" || @difficulty == "EASY"
+        @word = @pick_word[:easy].sample
+        @word = @word.upcase
+      elsif @difficulty == "M" || @difficulty == "MEDIUM"
+        @word = @pick_word[:medium].sample
+        @word = @word.upcase
+      elsif @difficulty == "H" || @difficulty == "HARD"
+        @word = @pick_word[:hard].sample
+        @word = @word.upcase
+      else
+        puts "I don't know what you want, please start over!"
+        exit
+      end
+    end        
   end
 
   # this method enables playing the game
